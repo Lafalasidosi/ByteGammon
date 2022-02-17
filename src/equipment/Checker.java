@@ -8,4 +8,8 @@ public class Checker {
     public Checker(Colour colour){
         this.colour = colour;
     }
+
+    public Colour getColour(){
+        return colour;
+    }
 }

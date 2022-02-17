@@ -17,4 +17,13 @@ public class Point{
     public void placeChecker(Checker checker){
         checkers.add(checker);
     }
+
+    public int size(){
+        return checkers.size();
+    }
+
+    public Checker getFirstChecker(){
+        return checkers.get(0);
+    }
+
 }

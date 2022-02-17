@@ -35,6 +35,18 @@ public class Board {
 
     @Override
     public String toString(){
-        return "";
+        /*
+        want: go through points and add the number of checkers currently on it
+         */
+        int count;
+        StringBuilder sb = new StringBuilder();
+        for(Point point: points) {
+            count = point.size();
+            if (count > 0) {
+                count = point.getFirstChecker().getColour() == Colour.RED ? count : -count;
+            }
+            sb.append(String.format("%d,", count));
+        }
+        return sb.toString();
     }
 }
