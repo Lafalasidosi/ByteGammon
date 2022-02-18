@@ -22,12 +22,12 @@ public class Board {
     }
 
     private void fillStartingPosition(Point[] points) {
-        int[] initialPositions = {5, 7, 12, 18};
+        int[] initialPositions = {5, 7, 12, 23};
         int[] numberOfCheckers = {5, 3, 5, 2};
         for (Colour colour : Colour.values()){
-            for (int index : initialPositions) {
-                for(int checkers : numberOfCheckers) {
-                    points[(colour == Colour.RED ? index : 23 - index)].placeChecker(new Checker(colour));
+            for (int i = 0; i < 4; i++) {
+                for(int j = 0; j<numberOfCheckers[i]; j++){
+                    points[(colour == Colour.RED ? initialPositions[i] : 23 - initialPositions[i])].placeChecker(new Checker(colour));
                 }
             }
         }
@@ -43,7 +43,7 @@ public class Board {
         for(Point point: points) {
             count = point.size();
             if (count > 0) {
-                count = point.getFirstChecker().getColour() == Colour.RED ? count : -count;
+                count = point.getFirstChecker().getColour() == Colour.RED ? count : -1 * count;
             }
             sb.append(String.format("%d,", count));
         }
