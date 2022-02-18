@@ -43,7 +43,7 @@ public class Board {
         for(Point point: points) {
             count = point.size();
             if (count > 0) {
-                count = point.getFirstChecker().getColour() == Colour.RED ? count : -1 * count;
+                count = point.getLastChecker().getColour() == Colour.RED ? count : -1 * count;
             }
             sb.append(String.format("%d,", count));
         }
