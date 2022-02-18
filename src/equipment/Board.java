@@ -27,7 +27,7 @@ public class Board {
         for (Colour colour : Colour.values()){
             for (int i = 0; i < 4; i++) {
                 for(int j = 0; j<numberOfCheckers[i]; j++){
-                    points[(colour == Colour.RED ? initialPositions[i] : 23 - initialPositions[i])].placeChecker(new Checker(colour));
+                    points[points[initialPositions[i]].getPointPerPlayer(colour)].placeChecker(new Checker(colour));
                 }
             }
         }
