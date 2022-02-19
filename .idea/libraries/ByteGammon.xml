@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ByteGammon">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ByteGammon.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
