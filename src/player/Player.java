@@ -17,5 +17,9 @@ public class Player {
         
     }
 
+    public void bearOff(){
+
+    }
+
 
 }
