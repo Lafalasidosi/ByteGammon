@@ -12,8 +12,9 @@ public class World {
     private Die d1;
     private Die d2;
     private static Die[] dice;
-    
-    public World(){
+    private Player[] players;
+
+    public World() {
         board = new Board();
         p1 = new Player(Colour.RED);
         p2 = new Player(Colour.BLACK);
@@ -22,13 +23,21 @@ public class World {
         dice = new Die[2];
         dice[0] = d1;
         dice[1] = d2;
+        players = new Player[2];
+        players[0] = p1;
+        players[1] = p2;
     }
 
-    public static Die[] getDice(){
+    public static Die[] getDice() {
         return dice;
     }
 
-    public Board getBoard(){
+    public Board getBoard() {
         return board;
+    }
+
+    public Player getPlayer(int n) {
+        // no reason for n-1, was just thinking of Player 1/Player 2 etc
+        return players[n - 1];
     }
 }
