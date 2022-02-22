@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import equipment.Checker;
 import equipment.ephemeral.*;
 import whoiswho.Colour;
+import world.World;
 
 public class Board {
 
@@ -46,6 +47,8 @@ public class Board {
         for(Point point: points) {
             sb.append(String.format("%d,", point.size()));
         }
+        sb.append(String.format("%d,", World.getDice()[0].getValue()));
+        sb.append(String.format("%d", World.getDice()[1].getValue()));
         return sb.toString();
     }
 }
