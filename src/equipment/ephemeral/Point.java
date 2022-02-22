@@ -25,11 +25,14 @@ public class Point{
     }
 
     public int size(){
-        return checkers.size();
+        if (checkers.size() == 0)
+          return 0;
+        Colour c = checkers.get(0).getColour();
+        return c == Colour.RED ? checkers.size() : -1 * checkers.size();
     }
 
     public Checker getLastChecker(){
-        return checkers.get(size() - 1);
+        return checkers.get(checkers.size() - 1);
     }
 
     /* 
@@ -41,4 +44,5 @@ public class Point{
     public int getPointPerPlayer(Colour c){
         return c == Colour.RED ? number : 23 - number;
     }
+
 }

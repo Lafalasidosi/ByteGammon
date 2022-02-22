@@ -2,7 +2,7 @@ package equipment;
 
 import java.util.ArrayList;
 import equipment.Checker;
-import equipment.ephemeral.Point;
+import equipment.ephemeral.*;
 import whoiswho.Colour;
 
 public class Board {
@@ -10,11 +10,12 @@ public class Board {
     // I'm thinking of an immutable array of mutable ArrayLists (Points)
     // Points could be classes, but they'd function just the same as an ArrayList
     Point[] points;
-    ArrayList bar = new ArrayList<Checker>(0);
+    Bar bar;
     ArrayList<Checker> bearOffSection = new ArrayList<Checker>(0);
 
     public Board(){
         points = new Point[24];
+        bar = new Bar(24);
         for(int i = 0; i < 24; i++){
             points[i] = new Point(i);
         }
@@ -40,12 +41,10 @@ public class Board {
          */
         int count;
         StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
+        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.BLACK)));
         for(Point point: points) {
-            count = point.size();
-            if (count > 0) {
-                count = point.getLastChecker().getColour() == Colour.RED ? count : -1 * count;
-            }
-            sb.append(String.format("%d,", count));
+            sb.append(String.format("%d,", point.size()));
         }
         return sb.toString();
     }
