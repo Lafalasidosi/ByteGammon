@@ -6,12 +6,11 @@ import java.util.ArrayList;
 
 public class Bar extends Point{
 
-  private int number;
+  //private int number;
   private ArrayList<Checker> checkers; 
 
   public Bar(int n){
     super(n);
-    number = n;
     checkers = new ArrayList<Checker>(0);
   }
 
