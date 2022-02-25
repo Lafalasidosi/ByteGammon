@@ -1,6 +1,5 @@
 package equipment;
 
-import java.util.ArrayList;
 //import equipment.Checker;
 import equipment.ephemeral.*;
 import whoiswho.Colour;
@@ -10,14 +9,17 @@ public class Board {
 
     Point[] points;
     Bar bar;
-    ArrayList<Checker> bearOffSection = new ArrayList<Checker>(0);
+    BearOffZone bearOffZone;
 
     public Board() {
-        points = new Point[24];
+        points = new Point[26]; // 24 points plus bar and bear-off zone
         bar = new Bar(24);
+        bearOffZone = new BearOffZone(25);
         for (int i = 0; i < 24; i++) {
             points[i] = new Point(i);
         }
+        points[24] = bar;
+        points[25] = bearOffZone;
         fillStartingPosition(points);
     }
 
@@ -37,6 +39,10 @@ public class Board {
                 }
             }
         }
+    }
+
+    public Point getPoint(int n){
+        return points[n];
     }
 
     /**
