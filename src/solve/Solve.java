@@ -2,6 +2,9 @@ package solve;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import equipment.Board;
+import equipment.Die;
 import readFile.FileReader;
 
 public class Solve {
@@ -10,8 +13,8 @@ public class Solve {
     public static ArrayList<Ply> plies = new ArrayList<Ply>(0);
     public static boolean hit;
 
-    public static void main(String[] args) {
-
+    public static ArrayList<Move> Solve(Board b, Die d1, Die d2) {
+        moves.clear();
         int[] board = new int[]{1,2,3,4};
         int[] diceRolls;
         int[] reverseDiceRolls;
@@ -22,10 +25,10 @@ public class Solve {
         // return possible moves
 
             reverseDiceRolls = new int[]{diceRolls[1], diceRolls[0]};
-            if(diceRolls[0] == diceRolls[1]){
+            if(diceRolls[0] == diceRolls[1]) {
                 diceRolls = timesTwo(diceRolls);
                 reverseDiceRolls = timesTwo(reverseDiceRolls);
-
+            }
 
             System.out.println();
             displayBoard(board);
@@ -40,8 +43,8 @@ public class Solve {
                 System.out.println(m.toString());
             }
 
-            moves.clear();
-        }
+            return moves;
+
     }
 
     /**
