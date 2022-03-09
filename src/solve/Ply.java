@@ -2,29 +2,39 @@ package solve;
 
 public class Ply{
 
-    private String move;
+    private int start;
+    private int end;
 
     /**
     * Assumes valid notation is passed.
     */
-    public Ply(String move){
-        this.move = move;
-    }
+//    public Ply(String move){
+//        this.move = move;
+//    }
 
     public Ply(int start, int end){
-        move = String.format("%d/%d", start, end);
+        this.start = start;
+        this.end = end;
     }
 
     public String getPly(){
-        return move;
+        return String.format("%d/%d", start, end);
     }
     
     public int getStartPoint(){
-        return Integer.parseInt(move.split("/")[0]);
+        return start;
     }
 
     public int getEndPoint(){
-        return Integer.parseInt(move.split("/")[1]);
+        return end;
+    }
+
+    private void setStartPoint(int i){
+        this.start = i;
+    }
+
+    private void setEndPoint(int i){
+        this.end = i;
     }
 
     public boolean equals(Ply p){
@@ -35,6 +45,11 @@ public class Ply{
 
     @Override
     public String toString(){
-        return move;
+        return String.format("%d/%d", start, end);
+    }
+
+    public void flip() {
+        setStartPoint(23 - start);
+        setEndPoint(23 - end);
     }
 }

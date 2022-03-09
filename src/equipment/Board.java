@@ -51,6 +51,9 @@ public class Board {
      * checkers are placed on points per the fillStartingPosition method, no pieces
      * on the bar (first two numbers of output), and the dice are assumed to both 
      * show the value 1.
+     *
+     * e.g. the beginning position is:
+     * 0,-2,0,0,0,0,5,0,3,0,0,0,-5,5,0,0,0,-3,0,-5,0,0,0,0,2,0,0,0,1,1
      * 
      * @return A String representation of the board.
      * 
@@ -60,7 +63,6 @@ public class Board {
         StringBuilder sb = new StringBuilder();
 
         // count checkers in the Bar
-        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
         sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.BLACK)));
 
         // count checkers on each of the 24 main points
@@ -68,9 +70,25 @@ public class Board {
             sb.append(String.format("%d,", point.size()));
         }
 
+        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
+
         // current dice values
-        sb.append(String.format("%d,", World.getDice()[0].getValue()));
-        sb.append(String.format("%d", World.getDice()[1].getValue()));
+//        sb.append(String.format("%d,", World.getDice()[0].getValue()));
+//        sb.append(String.format("%d", World.getDice()[1].getValue()));
+
+        sb.append(String.format("%d,", 2));
+        sb.append(String.format("%d", 1));
+
         return sb.toString();
+    }
+
+    public static int[] string2IntArray(String s){
+        String[] sArray = s.split(",");
+        int[] result = new int[s.length()];
+        int i = 0;
+        for(String s1 : sArray){
+            result[i++] = Integer.parseInt(s1);
+        }
+        return result;
     }
 }

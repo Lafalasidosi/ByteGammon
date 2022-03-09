@@ -63,4 +63,10 @@ public class Move{
         sb.deleteCharAt(sb.length()-1);
         return sb.toString();
     }
+
+    public void flip() {
+        for(Ply p : plies){
+            p.flip();
+        }
+    }
 }
