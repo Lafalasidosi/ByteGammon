@@ -15,7 +15,6 @@ public class Solve {
 
     public static ArrayList<Move> moves = new ArrayList<Move>(0);
     public static ArrayList<Ply> plies = new ArrayList<Ply>(0);
-    public static boolean hit;
 
     public static ArrayList<Move> Solve(Board b, Player player) {
         moves.clear();
@@ -51,14 +50,14 @@ public class Solve {
     }
 
     private static int[] extractPlayersBoard(Board b, Player player) {
-        int[] result = new int[28];
+        int[] result = new int[25];
         if(player.getColour() == Colour.BLACK) {
-            int[] tmp = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 0, 24);
+            int[] tmp = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 0, 25);
             for(int i = 0; i < 24; i++){
-                result[i] = -1 * tmp[23 - i];
+                result[i] = -1 * tmp[24 - i];
             }
         } else{
-            result = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 1, 25);
+            result = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 1, 26);
         }
         return result;
     }
@@ -81,12 +80,12 @@ public class Solve {
         int[] boardCopy = Arrays.copyOf(board, board.length);
 
         // case when hit
-        if (hit) {
+        if (boardCopy[24] > 0) {
             int moveTo;
             for (int i = 23; i > 17; i--) {
                 moveTo = 24 - rollsLeft[0];
                 if (board[i] > -2 && i == 24 - rollsLeft[0]) {
-                    hit = false;
+                    boardCopy[24]--;
                     plies.add(new Ply(25, moveTo));
                     if (moveTo > -1)
                         boardCopy[moveTo]++;
@@ -140,11 +139,15 @@ public class Solve {
             }
         }
 
-        if(player.getColour() == Colour.BLACK){
-            for(Move m: moves){
-                m.flip();
-            }
-        }
+        // this code doesn't work last I implemented it
+        // also, moves don't necessarily need to be written differently
+        // 24/23 is understood to mean 24/23 by Red,
+        // 1/2 for Black from Red's perspective
+//        if(player.getColour() == Colour.BLACK){
+//            for(Move m: moves){
+//                m.flip();
+//            }
+//        }
     }
 
     public static void removeXPlyMoves(ArrayList<Move> moves, int size) {
