@@ -1,52 +1,92 @@
 package equipment;
 
-import java.util.ArrayList;
-import equipment.Checker;
-import equipment.ephemeral.Point;
+//import equipment.Checker;
+import equipment.ephemeral.*;
 import whoiswho.Colour;
+import world.World;
 
 public class Board {
 
-    // I'm thinking of an immutable array of mutable ArrayLists (Points)
-    // Points could be classes, but they'd function just the same as an ArrayList
     Point[] points;
-    ArrayList bar = new ArrayList<Checker>(0);
-    ArrayList<Checker> bearOffSection = new ArrayList<Checker>(0);
+    Bar bar;
+    BearOffZone bearOffZone;
 
-    public Board(){
+    public Board() {
         points = new Point[24];
-        for(int i = 0; i < 24; i++){
+        bar = new Bar(24);
+        bearOffZone = new BearOffZone(-1);
+        for (int i = 0; i < 24; i++) {
             points[i] = new Point(i);
         }
         fillStartingPosition(points);
     }
 
+    /**
+     * Place checkers in their starting positions. 
+     * 
+     * @param points
+     */
     private void fillStartingPosition(Point[] points) {
-        int[] initialPositions = {5, 7, 12, 23};
-        int[] numberOfCheckers = {5, 3, 5, 2};
-        for (Colour colour : Colour.values()){
+        int[] initialPositions = { 5, 7, 12, 23 };
+        int[] numberOfCheckers = { 5, 3, 5, 2 };
+        for (Colour colour : Colour.values()) {
             for (int i = 0; i < 4; i++) {
-                for(int j = 0; j<numberOfCheckers[i]; j++){
-                    points[(colour == Colour.RED ? initialPositions[i] : 23 - initialPositions[i])].placeChecker(new Checker(colour));
+                for (int j = 0; j < numberOfCheckers[i]; j++) {
+                    // might be convoluted, but it works
+                    points[points[initialPositions[i]].getPointPerPlayer(colour)].placeChecker(new Checker(colour));
                 }
             }
         }
     }
 
+    public Point getPoint(int n){
+        return points[n];
+    }
+
+    /**
+     * The state of the board is described by the placement of the checkers and the
+     * current value shown on the dice. For example, at the beginning of a game the
+     * checkers are placed on points per the fillStartingPosition method, no pieces
+     * on the bar (first two numbers of output), and the dice are assumed to both 
+     * show the value 1.
+     *
+     * e.g. the beginning position is:
+     * 0,-2,0,0,0,0,5,0,3,0,0,0,-5,5,0,0,0,-3,0,-5,0,0,0,0,2,0,1,1
+     * 
+     * @return A String representation of the board.
+     * 
+     */
     @Override
-    public String toString(){
-        /*
-        want: go through points and add the number of checkers currently on it
-         */
-        int count;
+    public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(Point point: points) {
-            count = point.size();
-            if (count > 0) {
-                count = point.getFirstChecker().getColour() == Colour.RED ? count : -1 * count;
-            }
-            sb.append(String.format("%d,", count));
+
+        // count checkers in the Bar
+        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.BLACK)));
+
+        // count checkers on each of the 24 main points
+        for (Point point : points) {
+            sb.append(String.format("%d,", point.size()));
         }
+
+        sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
+
+        // current dice values
+//        sb.append(String.format("%d,", World.getDice()[0].getValue()));
+//        sb.append(String.format("%d", World.getDice()[1].getValue()));
+
+        sb.append(String.format("%d,", 2));
+        sb.append(String.format("%d", 1));
+
         return sb.toString();
+    }
+
+    public static int[] string2IntArray(String s){
+        String[] sArray = s.split(",");
+        int[] result = new int[s.length()];
+        int i = 0;
+        for(String s1 : sArray){
+            result[i++] = Integer.parseInt(s1);
+        }
+        return result;
     }
 }

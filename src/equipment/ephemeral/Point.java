@@ -14,8 +14,9 @@ public class Point{
         checkers = new ArrayList<Checker>(0);
     }
 
-    public void placeChecker(Checker checker){
-        checkers.add(checker);
+    public void placeChecker(Checker c){
+        if (size() == 0 || this.getLastChecker().getColour() == c.getColour())
+            checkers.add(c);
     }
     
     public Checker pickUpChecker(){

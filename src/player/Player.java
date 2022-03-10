@@ -1,6 +1,7 @@
 package player;
 
 import whoiswho.Colour;
+import equipment.Checker;
 
 public class Player {
     private Colour colour;
@@ -9,17 +10,7 @@ public class Player {
         this.colour = colour;
     }
 
-    public void makeMove(){
-
+    public Colour getColour(){
+        return colour;
     }
-
-    public void flipBoard(){
-        
-    }
-
-    public void bearOff(){
-
-    }
-
-
 }
