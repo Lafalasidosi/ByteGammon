@@ -12,14 +12,12 @@ public class Board {
     BearOffZone bearOffZone;
 
     public Board() {
-        points = new Point[26]; // 24 points plus bar and bear-off zone
+        points = new Point[24];
         bar = new Bar(24);
-        bearOffZone = new BearOffZone(25);
+        bearOffZone = new BearOffZone(-1);
         for (int i = 0; i < 24; i++) {
             points[i] = new Point(i);
         }
-        points[24] = bar;
-        points[25] = bearOffZone;
         fillStartingPosition(points);
     }
 
@@ -53,7 +51,7 @@ public class Board {
      * show the value 1.
      *
      * e.g. the beginning position is:
-     * 0,-2,0,0,0,0,5,0,3,0,0,0,-5,5,0,0,0,-3,0,-5,0,0,0,0,2,0,0,0,1,1
+     * 0,-2,0,0,0,0,5,0,3,0,0,0,-5,5,0,0,0,-3,0,-5,0,0,0,0,2,0,1,1
      * 
      * @return A String representation of the board.
      * 
