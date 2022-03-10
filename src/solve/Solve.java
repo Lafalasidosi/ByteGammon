@@ -16,10 +16,11 @@ public class Solve {
     public static ArrayList<Move> moves = new ArrayList<Move>(0);
     public static ArrayList<Ply> plies = new ArrayList<Ply>(0);
 
-    public static ArrayList<Move> Solve(Board b, Player player) {
+    public static ArrayList<Move> analyze(Board b, Player player) {
         moves.clear();
         int[] board = extractPlayersBoard(b, player);
-        int[] diceRolls = new int[]{2,1};
+        String[] tempDiceRolls = Arrays.copyOfRange(b.toString().split(","), 26, 28);
+        int[] diceRolls = new int[]{Integer.parseInt(tempDiceRolls[0]), Integer.parseInt(tempDiceRolls[1])};
         int[] reverseDiceRolls;
 
         // take a board from input
