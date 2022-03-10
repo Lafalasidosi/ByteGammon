@@ -1,7 +1,7 @@
 package equipment.ephemeral;
 
 import equipment.Checker;
-
+import whoiswho.Colour;
 import java.util.ArrayList;
 
 public class Point{
@@ -17,13 +17,32 @@ public class Point{
     public void placeChecker(Checker checker){
         checkers.add(checker);
     }
-
-    public int size(){
-        return checkers.size();
+    
+    public Checker pickUpChecker(){
+      Checker c = getLastChecker();
+      checkers.remove(c);
+      return c;
     }
 
-    public Checker getFirstChecker(){
-        return checkers.get(0);
+    public int size(){
+        if (checkers.size() == 0)
+          return 0;
+        Colour c = checkers.get(0).getColour();
+        return c == Colour.RED ? checkers.size() : -1 * checkers.size();
+    }
+
+    public Checker getLastChecker(){
+        return checkers.get(checkers.size() - 1);
+    }
+
+    /* 
+     * * Returns Point number from a given player's perspective.
+     * * e.g. Red's 5-point is Black's 19-point.
+     * *
+     * * @return    return the number of a point based on player.
+     * */
+    public int getPointPerPlayer(Colour c){
+        return c == Colour.RED ? number : 23 - number;
     }
 
 }
