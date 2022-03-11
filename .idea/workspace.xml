@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a947a8b2-e7a3-423e-83ab-73478b1d47a2" name="Changes" comment="Testing out git" />
+    <list default="true" id="a947a8b2-e7a3-423e-83ab-73478b1d47a2" name="Changes" comment="Testing out git part 5">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +61,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +97,35 @@
       <option name="project" value="LOCAL" />
       <updated>1647033227671</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Testing out git part 2">
+      <created>1647033402632</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647033402632</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Testing out git part 3">
+      <created>1647033459643</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647033459643</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Testing out git part 4">
+      <created>1647033541178</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647033541178</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Testing out git part 5">
+      <created>1647033598891</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1647033598891</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -107,6 +143,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="The lost git repository incident" />
     <MESSAGE value="Testing out git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing out git" />
+    <MESSAGE value="Testing out git part 2" />
+    <MESSAGE value="Testing out git part 3" />
+    <MESSAGE value="Testing out git part 4" />
+    <MESSAGE value="Testing out git part 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testing out git part 5" />
   </component>
 </project>
