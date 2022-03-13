@@ -1,10 +1,9 @@
 package equipment;
 
 import java.util.ArrayList;
-//import equipment.Checker;
+import equipment.Checker;
 import equipment.ephemeral.*;
-import whoiswho.Colour;
-import world.World;
+import equipment.world.World;
 
 public class Board {
 

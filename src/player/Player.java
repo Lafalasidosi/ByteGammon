@@ -1,7 +1,6 @@
 package player;
 
-import whoiswho.Colour;
-import equipment.Checker;
+import equipment.Colour;
 
 public class Player {
     private Colour colour;

@@ -1,7 +1,7 @@
 package equipment.ephemeral;
 
 import equipment.Checker;
-import whoiswho.Colour;
+import equipment.Colour;
 import java.util.ArrayList;
 
 public class Bar extends Point{

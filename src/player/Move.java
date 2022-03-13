@@ -1,6 +1,6 @@
 package player;
 
-import whoiswho.Colour;
+import equipment.Colour;
 
 public class Move {
 

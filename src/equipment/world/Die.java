@@ -1,4 +1,5 @@
-package equipment;
+package equipment.world;
+
 
 import java.util.Random;
 

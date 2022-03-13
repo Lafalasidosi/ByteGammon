@@ -1,9 +1,9 @@
-package world;
+package equipment.world;
+
 
 import equipment.Board;
-import equipment.Die;
 import player.Player;
-import whoiswho.Colour;
+import equipment.Colour;
 
 public class World {
     private Player p1;

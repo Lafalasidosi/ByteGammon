@@ -1,7 +1,5 @@
 package equipment;
 
-import whoiswho.Colour;
-
 public class Checker {
     private Colour colour;
 
