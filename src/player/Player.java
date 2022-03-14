@@ -8,4 +8,8 @@ public class Player {
     public Player(Colour colour){
         this.colour = colour;
     }
+
+    public Colour getColour(){
+        return colour;
+    }
 }
