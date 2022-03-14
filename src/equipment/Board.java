@@ -10,8 +10,10 @@ public class Board {
     Point[] points;
     Bar bar;
     BearOffZone bearOffZone;
+    World world;
 
-    public Board() {
+    public Board(World world) {
+        this.world = world;
         points = new Point[24];
         bar = new Bar(24);
         bearOffZone = new BearOffZone(-1);
@@ -24,7 +26,7 @@ public class Board {
     /**
      * Place checkers in their starting positions. 
      * 
-     * @param points
+     * @param points The set of points on which checkers lie.
      */
     private void fillStartingPosition(Point[] points) {
         int[] initialPositions = { 5, 7, 12, 23 };
@@ -71,8 +73,8 @@ public class Board {
         sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
 
         //current dice values
-        sb.append(String.format("%d,", World.getDice()[0].getValue()));
-        sb.append(String.format("%d", World.getDice()[1].getValue()));
+        sb.append(String.format("%d,", world.getDice()[0].getValue()));
+        sb.append(String.format("%d", world.getDice()[1].getValue()));
 
         return sb.toString();
     }
