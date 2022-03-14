@@ -1,6 +1,6 @@
 package player;
 
 public enum Config {
-    TRUE, FALSE
-
+    TRUE
 }
+//config class for playing vs an ai

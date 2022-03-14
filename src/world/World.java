@@ -2,6 +2,8 @@ package world;
 
 import equipment.Board;
 import equipment.Die;
+import player.Ai;
+import player.Config;
 import player.Player;
 import whoiswho.Colour;
 
@@ -19,8 +21,8 @@ public class World {
      */
     public World() {
         board = new Board();
-        p1 = new Player(Colour.RED);
-        p2 = new Player(Colour.BLACK);
+        p1 = new Player(Colour.RED, this);
+        p2 = new Player(Colour.BLACK, this);
         d1 = new Die();
         d2 = new Die();
         dice = new Die[2];
@@ -30,6 +32,20 @@ public class World {
         players[0] = p1;
         players[1] = p2;
     }
+    public World(Config c){
+        board = new Board();
+        p1 = new Player(Colour.RED, this);
+        Ai bot = new Ai(Colour.BLACK, this);
+        d1 = new Die();
+        d2 = new Die();
+        dice = new Die[2];
+        dice[0] = d1;
+        dice[1] = d2;
+        players = new Player[2];
+        players[0] = p1;
+        players[1] = p2;
+    }
+    //constructs an ai if & only if the player chooses to play vs ai
 
     public static Die[] getDice() {
         return dice;
