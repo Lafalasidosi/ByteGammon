@@ -6,8 +6,8 @@ import player.Player;
 import whoiswho.Colour;
 
 public class World {
-    private Player p1;
-    private Player p2;
+    private Player player1;
+    private Player player2;
     private Board board;
     private Die d1;
     private Die d2;
@@ -15,17 +15,34 @@ public class World {
     private Player[] players;
 
     public World() {
-        board = new Board();
-        p1 = new Player(Colour.RED);
-        p2 = new Player(Colour.BLACK);
-        d1 = new Die();
-        d2 = new Die();
+        //board = new Board();
+        player1 = new Player(Colour.RED);
+        player2 = new Player(Colour.BLACK);
+        d1 = new Die(); // "p1's" die
+        d2 = new Die(); // "p2's" die
         dice = new Die[2];
         dice[0] = d1;
         dice[1] = d2;
         players = new Player[2];
-        players[0] = p1;
-        players[1] = p2;
+        players[0] = player1;
+        players[1] = player2;
+    }
+
+    public void startGame(){
+        do{
+            d1.roll();
+            d2.roll();
+        } while (d1.getValue() == d2.getValue());
+        if(d1.getValue() > d1.getValue()){
+            // player1's turn first
+        } else{
+            // player2's turn first
+        }
+
+        board = new Board(); // create the board here so dice are added
+
+
+
     }
 
     public static Die[] getDice() {
@@ -40,4 +57,5 @@ public class World {
         // no reason for n-1, was just thinking of Player 1/Player 2 etc
         return players[n - 1];
     }
+
 }

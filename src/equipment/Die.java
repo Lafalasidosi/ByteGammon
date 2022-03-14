@@ -8,6 +8,7 @@ public class Die {
 
     public Die(){
         rand = new Random();
+        value = 1;
     }
 
     public void roll(){

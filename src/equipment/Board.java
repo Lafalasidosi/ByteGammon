@@ -70,12 +70,9 @@ public class Board {
 
         sb.append(String.format("%d,", bar.getCheckersOfColour(Colour.RED)));
 
-        // current dice values
-//        sb.append(String.format("%d,", World.getDice()[0].getValue()));
-//        sb.append(String.format("%d", World.getDice()[1].getValue()));
-
-        sb.append(String.format("%d,", 2));
-        sb.append(String.format("%d", 1));
+        //current dice values
+        sb.append(String.format("%d,", World.getDice()[0].getValue()));
+        sb.append(String.format("%d", World.getDice()[1].getValue()));
 
         return sb.toString();
     }
