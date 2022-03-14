@@ -14,6 +14,9 @@ public class World {
     private static Die[] dice;
     private Player[] players;
 
+    /**
+     * This is the World constructor
+     */
     public World() {
         board = new Board();
         p1 = new Player(Colour.RED);
