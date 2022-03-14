@@ -3,7 +3,11 @@ package world;
 import equipment.Board;
 import equipment.Die;
 import player.Player;
+import solve.Solve;
 import whoiswho.Colour;
+import solve.Move;
+
+import java.util.ArrayList;
 
 public class World {
     private Player player1;
@@ -47,6 +51,11 @@ public class World {
 
         System.out.println("Welcome to the game, here's the board: \n" + board);
 
+        ArrayList<Move> firstLegalMoves = Solve.analyze(board, players[turn]);
+
+        players[turn].makeMove(firstLegalMoves.get(0));
+
+        System.out.println("Here's the new board after one ply: \n" + board);
 
     }
 

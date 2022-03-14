@@ -2,6 +2,7 @@ package equipment;
 
 //import equipment.Checker;
 import equipment.ephemeral.*;
+import player.Player;
 import whoiswho.Colour;
 import world.World;
 
@@ -41,8 +42,8 @@ public class Board {
         }
     }
 
-    public Point getPoint(int n){
-        return points[n];
+    public Point getPoint(int n, Colour c){
+        return points[points[n].getPointPerPlayer(c)];
     }
 
     /**
