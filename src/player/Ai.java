@@ -14,14 +14,15 @@ public class Ai{
         bot.add(c);
         this.world = w;
     }
-    
-    @Override
-    public void makeMove(){
+
+
+    public void makeMove(Move m){
     }
     //constructs an ai and adds its attributes accordingly
 
-    public void isTurn(){
-
+    public boolean isTurn(){
+        boolean flag = false;
+        return flag;
     }
 
 }

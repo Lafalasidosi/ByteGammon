@@ -10,9 +10,11 @@ import world.World;
 import java.util.ArrayList;
 
 public class Player extends Ai{
-    private Colour colour;
+
     private ArrayList<Object> player;
     private World world;
+    private Colour colour;
+
 
 
     public Player(Colour colour, World world){
@@ -24,16 +26,18 @@ public class Player extends Ai{
     //constructs the player and assigns its attributes
 
     public Colour getColour(){
-        return colour;
+        return this.colour;
     }
     //returns the colour of a particular player
 
+@Override
     public void makeMove(Move m){
-
     }
 
-    public void isTurn(){
-
+@Override
+    public boolean isTurn(){
+        boolean flag = false;
+        return flag;
     }
 
     /*
