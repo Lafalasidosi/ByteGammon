@@ -1,4 +1,5 @@
 package solve;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Move{
@@ -21,6 +22,10 @@ public class Move{
         for(Ply p : input){
             plies.add(p);
         }
+    }
+
+    public ArrayList<Ply> getPlies(){
+        return plies;
     }
 
     public Ply getPly1(){
