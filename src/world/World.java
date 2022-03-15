@@ -2,6 +2,7 @@ package world;
 
 import equipment.Board;
 import equipment.Die;
+import equipment.DoublingCube;
 import player.Player;
 import whoiswho.Colour;
 
@@ -14,6 +15,7 @@ public class World {
     private static Die[] dice;
     private Player[] players;
     private int turn;
+    private DoublingCube doublingCube;
 
     public World() {
         //board = new Board();
@@ -21,6 +23,7 @@ public class World {
         player2 = new Player(Colour.BLACK, this);
         d1 = new Die(); // "p1's" die
         d2 = new Die(); // "p2's" die
+        doublingCube = new DoublingCube();
         dice = new Die[2];
         dice[0] = d1;
         dice[1] = d2;
@@ -47,7 +50,6 @@ public class World {
 
         System.out.println("Welcome to the game, here's the board: \n" + board);
 
-
     }
 
     public Die[] getDice() {
@@ -65,6 +67,26 @@ public class World {
 
     public void nextTurn(){
         turn = (turn + 1) % 2;
+    }
+
+    public DoublingCube getdoublingcube(){
+        return this.doublingCube;
+
+    }
+
+    public void offerdoublingcube(Player player, boolean accept){
+
+        if(player.getHasdoublingcube()&&accept){
+            doublingCube.doubling();
+            player.setHasdoublingcube(false);
+        }else {
+            if (!player.getHasdoublingcube()) {
+                System.out.println("cannot double");
+            }
+            if (!accept) {
+                player.setIswinner(true);
+            }
+        }
     }
 
 }
