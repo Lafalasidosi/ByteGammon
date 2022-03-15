@@ -8,7 +8,7 @@ import player.Player;
 import whoiswho.Colour;
 //import readFile.FileReader;
 
-public class Solve {
+public abstract class Solve {
 
     public static ArrayList<Move> moves = new ArrayList<Move>(0);
     public static ArrayList<Ply> plies = new ArrayList<Ply>(0);
@@ -49,12 +49,12 @@ public class Solve {
 
     private static int[] extractPlayersBoard(Board b, Player player) {
         int[] result = new int[25];
-        if(player.getColour() == Colour.BLACK) {
+        if (player.getColour() == Colour.BLACK) {
             int[] tmp = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 0, 25);
-            for(int i = 0; i < 24; i++){
+            for (int i = 0; i < 24; i++) {
                 result[i] = -1 * tmp[24 - i];
             }
-        } else{
+        } else {
             result = Arrays.copyOfRange(Board.string2IntArray(b.toString()), 1, 26);
         }
         return result;
@@ -240,5 +240,10 @@ public class Solve {
             result[i] = x[0];
         return result;
     }
-
 }
+
+    //method for determining the number of actions the ai can make
+    /*
+    In this particular case, the results would just be the moves that can be made from each given state.
+     */
+

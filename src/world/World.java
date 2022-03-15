@@ -3,6 +3,8 @@ package world;
 import equipment.Board;
 import equipment.Die;
 import equipment.DoublingCube;
+import player.Ai;
+import player.Config;
 import player.Player;
 import solve.*;
 import whoiswho.Colour;
@@ -20,6 +22,7 @@ public class World {
     private Player[] players;
     private int turn;
     private DoublingCube doublingCube;
+    private Ai abot;
 
     public World() {
         //board = new Board();
@@ -34,6 +37,22 @@ public class World {
         players = new Player[2];
         players[0] = player1;
         players[1] = player2;
+    }
+
+    public World(Config c){
+        player1 = new Player(Colour.RED, this);
+        abot = new Ai(Colour.BLACK, this);
+        d1 = new Die(); // "p1's" die
+        d2 = new Die(); // the bot's die
+        doublingCube = new DoublingCube();
+        dice = new Die[2];
+        dice[0] = d1;
+        dice[1] = d2;
+        players = new Player[2];
+        players[0] = player1;
+        players[1] = abot;
+
+
     }
 
     public void startGame(){
