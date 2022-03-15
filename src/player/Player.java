@@ -1,47 +1,65 @@
 package player;
 
-import equipment.Board;
-import solve.Solve;
+import solve.Ply;
 import whoiswho.Colour;
-import equipment.Checker;
-import solve.Move;
+import equipment.Die;
+import equipment.ephemeral.Point;
 import world.World;
+import solve.Move;
 
-import java.util.ArrayList;
-
-public class Player extends Ai{
-
-    private ArrayList<Object> player;
-    private World world;
+public class Player {
     private Colour colour;
+    private World world;
+    private boolean hasdoublingcube;
+    private boolean iswinner;
 
 
 
     public Player(Colour colour, World world){
-        super(colour, world);
-        this.player = new ArrayList<>();
-        player.add(colour);
+        this.colour = colour;
         this.world = world;
+        this.hasdoublingcube = true;
+        this.iswinner = false;
     }
-    //constructs the player and assigns its attributes
+
+    public void makeMove(Move m){
+        int start, end;
+        Point startPoint, endPoint;
+        for(Ply p: m.getPlies()) {
+            start = p.getStart() - 1;
+            end = p.getEnd() - 1;
+            startPoint = world.getBoard().getPoint(start, this.colour);
+            endPoint = world.getBoard().getPoint(end, this.colour);
+            if(endPoint.isBlot(this.colour)){ // if end point of ply is a blot, hit opponent
+                world.getBoard().getBearOffZone().placeChecker(endPoint.pickUpChecker());
+            }
+            endPoint.placeChecker(startPoint.pickUpChecker());
+        }
+    }
+
+    public void rollDice(){
+        for(Die d : world.getDice()){
+            d.roll();
+        }
+    }
 
     public Colour getColour(){
-        return this.colour;
-    }
-    //returns the colour of a particular player
-
-@Override
-    public void makeMove(Move m){
+        return colour;
     }
 
-@Override
-    public boolean isTurn(){
-        boolean flag = false;
-        return flag;
+    public boolean getHasdoublingcube() {
+        return hasdoublingcube;
     }
 
-    /*
-    Passes a move to a makemove method. If the move is contained within the list of valid moves then
-    the passed move will be made.
-     */
+    public void setHasdoublingcube(boolean hasdoublingcube) {
+        this.hasdoublingcube = hasdoublingcube;
+    }
+
+    public boolean isIswinner() {
+        return iswinner;
+    }
+
+    public void setIswinner(boolean iswinner) {
+        this.iswinner = iswinner;
+    }
 }
