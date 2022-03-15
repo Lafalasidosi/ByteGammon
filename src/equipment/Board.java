@@ -2,7 +2,6 @@ package equipment;
 
 //import equipment.Checker;
 import equipment.ephemeral.*;
-import player.Player;
 import whoiswho.Colour;
 import world.World;
 

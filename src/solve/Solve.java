@@ -1,12 +1,9 @@
 package solve;
 
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import equipment.Board;
-import equipment.Die;
 import player.Player;
 import whoiswho.Colour;
 //import readFile.FileReader;

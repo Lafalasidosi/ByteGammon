@@ -2,7 +2,7 @@ package player;
 
 import solve.Ply;
 import whoiswho.Colour;
-import equipment.Checker;
+//import equipment.Checker;
 import world.World;
 import solve.Move;
 

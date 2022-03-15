@@ -1,5 +1,4 @@
 package solve;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Move{
@@ -62,7 +61,6 @@ public class Move{
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        String result;
         for(Ply p : plies)
             sb.append(p.toString()+";");
         sb.deleteCharAt(sb.length()-1);
