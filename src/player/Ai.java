@@ -66,15 +66,10 @@ public class Ai extends Player {
      * @return void
      */
 
-
-
-
-
-        public boolean isTurn () {
-            boolean flag = false;
-            return flag;
-        }
-
+    public boolean isTurn () {
+        boolean flag = false;
+        return flag;
     }
+}
 
 
