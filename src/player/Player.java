@@ -15,7 +15,7 @@ public class Player {
         this.world = world;
     }
 
-    public void makeMove(Move m){
+    public void makeMove(Move m){ // hitting an opponent should be handled here
         int start, end;
         for(Ply p: m.getPlies()) {
             start = p.getStartPoint() - 1;

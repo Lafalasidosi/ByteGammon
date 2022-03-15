@@ -51,12 +51,17 @@ public class World {
 
         System.out.println("Welcome to the game, here's the board: \n" + board);
 
+
+        // start the play (start of loop)
+
         ArrayList<Move> firstLegalMoves = Solve.analyze(board, players[turn]);
 
-        players[turn].makeMove(firstLegalMoves.get(0));
+        players[turn].makeMove(firstLegalMoves.get(0)); // just make the first legal move
 
         System.out.println("Here's the new board after one ply: \n" + board);
 
+
+        // play (loop) should end when a player declines a double or bears off all pieces
     }
 
     public Die[] getDice() {
