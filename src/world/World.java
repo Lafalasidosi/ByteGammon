@@ -4,7 +4,11 @@ import equipment.Board;
 import equipment.Die;
 import equipment.DoublingCube;
 import player.Player;
+import solve.*;
 import whoiswho.Colour;
+import solve.Move;
+
+import java.util.ArrayList;
 
 public class World {
     private Player player1;
@@ -35,8 +39,8 @@ public class World {
     public void startGame(){
         // setup
         do{
-            d1.roll();
-            d2.roll();
+            d1.setValue(4);
+            d2.setValue(6);
         } while (d1.getValue() == d2.getValue());
         if(d1.getValue() > d1.getValue()){
             // player1's turn first
@@ -49,6 +53,19 @@ public class World {
         board = new Board(this); // create the board here so dice are added
 
         System.out.println("Welcome to the game, here's the board: \n" + board);
+
+
+        // start the play (start of loop)
+
+        ArrayList<Move> firstLegalMoves = Solve.analyze(board, players[turn]);
+
+        players[turn].makeMove(firstLegalMoves.get(0)); // just make the first legal move
+
+
+        System.out.println("Here's the new board after one move: \n" + board);
+
+
+        // play (loop) should end when a player declines a double or bears off all pieces
 
     }
 

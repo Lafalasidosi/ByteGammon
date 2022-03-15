@@ -21,11 +21,11 @@ public class Ply{
         return String.format("%d/%d", start, end);
     }
     
-    public int getStartPoint(){
+    public int getStart(){
         return start;
     }
 
-    public int getEndPoint(){
+    public int getEnd(){
         return end;
     }
 
@@ -38,8 +38,8 @@ public class Ply{
     }
 
     public boolean equals(Ply p){
-        boolean startSame = this.getStartPoint() == p.getStartPoint();
-        boolean endSame = this.getEndPoint() == p.getEndPoint();
+        boolean startSame = this.getStart() == p.getStart();
+        boolean endSame = this.getEnd() == p.getEnd();
         return startSame && endSame;
     }
 

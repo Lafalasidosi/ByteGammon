@@ -1,12 +1,9 @@
 package solve;
 
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import equipment.Board;
-import equipment.Die;
 import player.Player;
 import whoiswho.Colour;
 //import readFile.FileReader;
@@ -33,18 +30,18 @@ public class Solve {
             reverseDiceRolls = timesTwo(reverseDiceRolls);
         }
 
-        System.out.println();
-        displayBoard(board);
-        System.out.println("\nLegal moves for this board:");
+//        System.out.println();
+//        displayBoard(board);
+//        System.out.println("\nLegal moves for this board:");
 
         solve(board, plies, diceRolls);
         solve(board, plies, reverseDiceRolls);
 
         prune(moves, player);
 
-        for (Move m : moves) {
-            System.out.println(m.toString());
-        }
+//        for (Move m : moves) {
+//            System.out.println(m.toString());
+//        }
 
         return moves;
 

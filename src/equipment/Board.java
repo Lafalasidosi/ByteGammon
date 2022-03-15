@@ -41,8 +41,12 @@ public class Board {
         }
     }
 
-    public Point getPoint(int n){
-        return points[n];
+    public Point getPoint(int n, Colour c){
+        return points[points[n].getPointPerPlayer(c)];
+    }
+
+    public BearOffZone getBearOffZone(){
+        return bearOffZone;
     }
 
     /**
