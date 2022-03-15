@@ -55,9 +55,10 @@ public class World {
 
     public void startGame(){
         // setup
+        ArrayList<Move> legalMoves;
         do{
-            d1.setValue(4);
-            d2.setValue(6);
+            d1.roll();
+            d2.roll();
         } while (d1.getValue() == d2.getValue());
         if(d1.getValue() > d1.getValue()){
             // player1's turn first
@@ -71,18 +72,26 @@ public class World {
 
         System.out.println("Welcome to the game, here's the board: \n" + board);
 
+        do{
+            // start the play (start of loop)
 
-        // start the play (start of loop)
+            legalMoves = Solve.analyze(board, players[turn]);
 
-        ArrayList<Move> firstLegalMoves = Solve.analyze(board, players[turn]);
-
-        players[turn].makeMove(firstLegalMoves.get(0)); // just make the first legal move
-
-
-        System.out.println("Here's the new board after one move: \n" + board);
+            players[turn].makeMove(legalMoves.get(0)); // just make the first legal move
 
 
-        // play (loop) should end when a player declines a double or bears off all pieces
+            System.out.println("Here's the new board after one move: \n" + board);
+
+            for(Die d : dice)
+                d.roll();
+
+            nextTurn();
+
+        } while(board.bothPlayersHaveCheckersOut()); 
+
+            // play (loop) should end when a player declines a double or bears off all pieces
+
+        System.out.println("Game Finished");
 
     }
 

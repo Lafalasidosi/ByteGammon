@@ -49,6 +49,27 @@ public class Board {
         return bearOffZone;
     }
 
+    public boolean bothPlayersHaveCheckersOut(){
+        /*
+        cycle through board points
+        if by the end encounter no checkers of one colour or another, return false;
+        if encounter at least one of each colour, return true.
+        */
+        boolean REDHasCheckersOut, BLACKHasCheckersOut;
+        REDHasCheckersOut = BLACKHasCheckersOut = false;
+
+        for(Point p : points){
+            if(p.size() > 0)
+                REDHasCheckersOut = true;
+            else if(p.size() < 0)
+                BLACKHasCheckersOut = true;
+            if(REDHasCheckersOut && BLACKHasCheckersOut)
+                return true;
+        }
+        return false;
+    }
+
+
     /**
      * The state of the board is described by the placement of the checkers and the
      * current value shown on the dice. For example, at the beginning of a game the
