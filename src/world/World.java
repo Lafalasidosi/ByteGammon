@@ -51,8 +51,6 @@ public class World {
         players = new Player[2];
         players[0] = player1;
         players[1] = abot;
-
-
     }
 
     public void startGame(){
