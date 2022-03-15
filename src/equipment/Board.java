@@ -45,6 +45,10 @@ public class Board {
         return points[points[n].getPointPerPlayer(c)];
     }
 
+    public BearOffZone getBearOffZone(){
+        return bearOffZone;
+    }
+
     /**
      * The state of the board is described by the placement of the checkers and the
      * current value shown on the dice. For example, at the beginning of a game the

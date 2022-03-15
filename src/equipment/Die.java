@@ -19,4 +19,8 @@ public class Die {
       return value;
     }
 
+    public void setValue(int n){
+        value = n;
+    }
+
 }

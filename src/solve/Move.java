@@ -49,10 +49,10 @@ public class Move{
         }
         boolean exactSame = this.getPly1().equals(m.getPly2()) && this.getPly2().equals(m.getPly1());
         boolean sameButCommuted = this.getPly1().equals(m.getPly1()) && this.getPly2().equals(m.getPly2());
-        boolean inBetweenStepsSame = this.getPly1().getEndPoint() == this.getPly2().getStartPoint() && 
-        m.getPly1().getEndPoint() == m.getPly2().getStartPoint();
-        boolean sameResult = (this.getPly1().getStartPoint() == m.getPly1().getStartPoint() &&
-                                this.getPly2().getEndPoint() == m.getPly2().getEndPoint() && 
+        boolean inBetweenStepsSame = this.getPly1().getEnd() == this.getPly2().getStart() && 
+        m.getPly1().getEnd() == m.getPly2().getStart();
+        boolean sameResult = (this.getPly1().getStart() == m.getPly1().getStart() &&
+                                this.getPly2().getEnd() == m.getPly2().getEnd() && 
                                 inBetweenStepsSame);
 
         return exactSame || sameButCommuted || sameResult;
