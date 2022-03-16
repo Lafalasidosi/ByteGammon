@@ -111,6 +111,7 @@ public abstract class Solve {
                 if(boardCopy[i] > 0 && roll == i+1) { // this seems super bad, will rewrite
                     canUseRollOrHigherChecker = true;
                     plies.add(new BearOff(i+1));
+                    boardCopy[i]--;
                     solve(boardCopy, plies, subarray(rollsLeft));
                 } else if(boardCopy[i] > 0){
                     canUseRollOrHigherChecker = true;
