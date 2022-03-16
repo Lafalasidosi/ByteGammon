@@ -106,10 +106,10 @@ public abstract class Solve {
             otherwise, remove a checker from the next highest point
              */
             boolean canUseRollOrHigherChecker = false;
-            for(int i = roll; i < 6; i++){ // check for point rolled and higher points
-                if(boardCopy[i] > 0 && roll == i) { // this seems super bad, will rewrite
+            for(int i = roll-1; i < 6 & i >= 0; i++){ // check for point rolled and higher points
+                if(boardCopy[i] > 0 && roll == i+1) { // this seems super bad, will rewrite
                     canUseRollOrHigherChecker = true;
-                    plies.add(new BearOff(i));
+                    plies.add(new BearOff(i+1));
                     solve(boardCopy, plies, subarray(rollsLeft));
                 } else if(boardCopy[i] > 0){
                     canUseRollOrHigherChecker = true;
@@ -121,9 +121,9 @@ public abstract class Solve {
             }
 
             if(!canUseRollOrHigherChecker) {
-                for (int i = roll - 1; i >= 0; i--) { // find next highest checker to move
+                for (int i = roll - 2; i >= 0; i--) { // find next highest checker to move
                     if(boardCopy[i] > 0){
-                        plies.add(new BearOff(i));
+                        plies.add(new BearOff(i+1));
                         solve(boardCopy, plies, subarray(rollsLeft));
                     }
                 }
