@@ -29,6 +29,8 @@ public class Board {
      * @param points The set of points on which checkers lie.
      */
     private void fillStartingPosition(Point[] points) {
+        if(!isEmpty())
+            clearBoard();
         int[] initialPositions = { 5, 7, 12, 23 };
         int[] numberOfCheckers = { 5, 3, 5, 2 };
         for (Colour colour : Colour.values()) {
@@ -39,6 +41,20 @@ public class Board {
                 }
             }
         }
+    }
+
+    public boolean isEmpty(){
+        for(Point p: points)
+            if(p.size() != 0)
+                return false;
+        return true;
+    }
+
+    private void clearBoard(){
+        for(Point p: points)
+            p.clear();
+        bearOffZone.clear();
+        bar.clear();
     }
 
     public Point getPoint(int n, Colour c){

@@ -49,4 +49,8 @@ public class Point{
     public boolean isBlot(Colour c){
         return c == Colour.RED ? (size() == -1) : (size() == 1);
     }
+
+    public void clear(){
+        checkers.clear();
+    }
 }
