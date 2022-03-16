@@ -35,7 +35,8 @@ public abstract class Solve {
 //        System.out.println("\nLegal moves for this board:");
 
         solve(board, plies, diceRolls);
-        solve(board, plies, reverseDiceRolls);
+        if(diceRolls.length > 2)
+            solve(board, plies, reverseDiceRolls);
 
         prune(moves, player);
 
