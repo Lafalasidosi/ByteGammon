@@ -43,6 +43,10 @@ public class Board {
         }
     }
 
+    public void resetBoard(){
+        fillStartingPosition(points);
+    }
+
     public boolean isEmpty(){
         for(Point p: points)
             if(p.size() != 0)
