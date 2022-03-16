@@ -29,7 +29,7 @@ public class Player {
             start = p.getStart() - 1;
             end = p.getEnd() - 1;
             startPoint = world.getBoard().getPoint(start, this.colour);
-            endPoint = world.getBoard().getPoint(end, this.colour);
+            endPoint = p.getEnd() < 0 ? world.getBoard().getBearOffZone() : world.getBoard().getPoint(end, this.colour);
             if(endPoint.isBlot(this.colour)){ // if end point of ply is a blot, hit opponent
                 world.getBoard().getBearOffZone().placeChecker(endPoint.pickUpChecker());
             }
