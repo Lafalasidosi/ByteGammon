@@ -74,13 +74,13 @@ public class World {
 
         do{
             // start the play (start of loop)
-
+            System.out.println("\n\n\nHere's the board at the start of " + players[turn].getColour() + "'s turn: \n" + board);
             legalMoves = Solve.analyze(board, players[turn]);
-
-            players[turn].makeMove(legalMoves.get(0)); // just make the first legal move
-
-
-            System.out.println("Here's the new board after one move: \n" + board);
+            if(legalMoves.size() > 0) {
+                System.out.println("Move to be made: \n" + legalMoves.get(0));
+                players[turn].makeMove(legalMoves.get(0)); // just make the first legal move
+            }
+            else{System.out.println("No legal moves.");}
 
             for(Die d : dice)
                 d.roll();

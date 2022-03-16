@@ -99,37 +99,43 @@ public abstract class Solve {
         }
 
         // case when can bear off
-        if(!existsCheckerOutsideHomeBoard(boardCopy)){
+        if(!existsCheckerOutsideHomeBoard(boardCopy)) {
             /*
             start checking at point equal to a die value
             if there's a checker there, find its legal move
             if not, check up to point 6; if checker there, find a legal move for it
             otherwise, remove a checker from the next highest point
              */
-            boolean canUseRollOrHigherChecker = false;
-            for(int i = roll-1; i < 6 & i >= 0; i++){ // check for point rolled and higher points
-                if(boardCopy[i] > 0 && roll == i+1) { // this seems super bad, will rewrite
-                    canUseRollOrHigherChecker = true;
-                    plies.add(new BearOff(i+1));
-                    boardCopy[i]--;
-                    solve(boardCopy, plies, subarray(rollsLeft));
-                } else if(boardCopy[i] > 0){
-                    canUseRollOrHigherChecker = true;
-                    boardCopy[i-roll]++;
-                    boardCopy[i]--;
-                    plies.add(new Ply(i, i-roll));
-                    solve(boardCopy, plies, subarray(rollsLeft));
-                }
+            int moveTo;
+            if(boardCopy[roll-1] > 0){ // if can bear off with die
+                boardCopy[roll-1]--;
+                plies.add(new BearOff(roll));
+                solve(boardCopy, plies, subarray(rollsLeft));
             }
-
-            if(!canUseRollOrHigherChecker) {
-                for (int i = roll - 2; i >= 0; i--) { // find next highest checker to move
-                    if(boardCopy[i] > 0){
-                        plies.add(new BearOff(i+1));
+            else { // otherwise just move the checker
+                for(int i = roll; i < 6; i++){
+                    moveTo = boardCopy[i - roll];
+                    if (boardCopy[i] > 0 && moveTo > -2) {
+                        boardCopy[i]--;
+                        plies.add(new Ply(i + 1, i + 1 - roll));
+                        if (moveTo > -1)
+                            boardCopy[i - roll]++;
+                        else
+                            boardCopy[i - roll] += 2;
                         solve(boardCopy, plies, subarray(rollsLeft));
                     }
                 }
             }
+            // if all that fails, bear off next highest checker
+            for(int i = roll - 2; i > 1; i--){
+                if(boardCopy[i] > 0){ // if can bear off with die
+                    boardCopy[i]--;
+                    plies.add(new BearOff(i+1));
+                    solve(boardCopy, plies, subarray(rollsLeft));
+                }
+            }
+
+
         }
 
         int l = board.length;
