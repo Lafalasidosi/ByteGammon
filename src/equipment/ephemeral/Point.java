@@ -34,6 +34,7 @@ public class Point{
 
     public Checker getLastChecker(){
         return checkers.get(checkers.size() - 1);
+
     }
 
     /* 

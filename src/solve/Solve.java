@@ -131,6 +131,7 @@ public abstract class Solve {
                 if(boardCopy[i] > 0){ // if can bear off with die
                     boardCopy[i]--;
                     plies.add(new BearOff(i+1));
+                    boardCopy[i]--;
                     solve(boardCopy, plies, subarray(rollsLeft));
                 }
             }

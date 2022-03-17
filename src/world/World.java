@@ -3,6 +3,7 @@ package world;
 import equipment.Board;
 import equipment.Die;
 import equipment.DoublingCube;
+import equipment.ephemeral.Point;
 import player.Ai;
 import player.Config;
 import player.Player;
@@ -87,13 +88,14 @@ public class World {
 
             nextTurn();
 
-        } while(board.bothPlayersHaveCheckersOut()); 
+        } while(board.bothPlayersHaveCheckersOut());
 
             // play (loop) should end when a player declines a double or bears off all pieces
 
         System.out.println("Game Finished");
 
     }
+    //fix the loop and check out issue with getPoint
 
     public Die[] getDice() {
         return dice;
@@ -117,6 +119,8 @@ public class World {
 
     }
 
+
+
     public void offerdoublingcube(Player player, boolean accept){
 
         if(player.getHasdoublingcube()&&accept){
@@ -127,9 +131,14 @@ public class World {
                 System.out.println("cannot double");
             }
             if (!accept) {
-                player.setIswinner(true);
+                player.setIsWinner(true);
             }
         }
     }
-
 }
+
+/**
+ * TODO
+ * Check out line 80
+ * why does getPoint in the board class return a negative index?
+ */

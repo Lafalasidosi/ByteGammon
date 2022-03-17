@@ -50,7 +50,7 @@ public class Ai extends Player {
             start = p.getStart() - 1;
             end = p.getEnd() - 1;
             startPoint = world.getBoard().getPoint(start, this.colour);
-            endPoint = world.getBoard().getPoint(end, this.colour);
+            endPoint = p.getEnd() < 0 ? world.getBoard().getBearOffZone() : world.getBoard().getPoint(end, this.colour);
             Collections.shuffle(randMove.getPlies());//shuffles the arraylist of plies
             this.reShuffle();
             if(endPoint.isBlot(this.colour)){

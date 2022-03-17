@@ -7,7 +7,7 @@ import equipment.ephemeral.Point;
 import world.World;
 import solve.Move;
 
-public class Player {
+public class Player{
     private Colour colour;
     private World world;
     private boolean hasdoublingcube;
@@ -58,11 +58,17 @@ public class Player {
         this.hasdoublingcube = hasdoublingcube;
     }
 
-    public boolean isIswinner() {
+    public boolean IsWinner() {
         return iswinner;
     }
 
-    public void setIswinner(boolean iswinner) {
+    public void setIsWinner(boolean iswinner) {
         this.iswinner = iswinner;
     }
+
+
+
+
+
+
 }

@@ -5,6 +5,8 @@ import equipment.ephemeral.*;
 import whoiswho.Colour;
 import world.World;
 
+import java.util.ArrayList;
+
 public class Board {
 
     Point[] points;
@@ -44,6 +46,9 @@ public class Board {
     public Point getPoint(int n, Colour c){
         return points[points[n].getPointPerPlayer(c)];
     }
+    //points n.getpointper player returns -26
+    //ensures lack of ambiguity
+    //could be an issue with makeMove? in the player class
 
     public BearOffZone getBearOffZone(){
         return bearOffZone;
