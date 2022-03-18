@@ -59,45 +59,23 @@ public class World {
         rg.start();
     }
 
-    public void startGame(){
-        // setup
-        ArrayList<Move> legalMoves;
-        do{
-            d1.roll();
-            d2.roll();
-        } while (d1.getValue() == d2.getValue());
-        if(d1.getValue() > d1.getValue()){
-            // player1's turn first
-            turn = 0;
-        } else{
-            // player2's turn first
-            turn = 1;
+    public void startHumanAgainstRobot(){
+        board = new Board(this);
+        OneHumanGame og = new OneHumanGame(this);
+        og.start();
+    }
+
+    public void startGame(int option){
+        switch (option){
+            case 1: System.out.println("Not available. Starting Robot game");
+                    startRobotGame();
+                    break;
+            case 2: startHumanAgainstRobot();
+                    break;
+            case 3: startRobotGame();
+                break;
+            default: System.out.println("Heck");
         }
-
-        board = new Board(this); // create the board here so dice are added
-
-        System.out.println("Welcome to the game, here's the board: \n" + board);
-
-        do{
-            // start the play (start of loop)
-            System.out.println("\n\n\nHere's the board at the start of " + players[turn].getColour() + "'s turn: \n" + board);
-            legalMoves = Solve.analyze(board, players[turn]);
-            if(legalMoves.size() > 0) {
-                System.out.println("Move to be made: \n" + legalMoves.get(0));
-                players[turn].makeMove(legalMoves.get(0)); // just make the first legal move
-            }
-            else{System.out.println("No legal moves.");}
-
-            for(Die d : dice)
-                d.roll();
-
-            nextTurn();
-
-        } while(board.bothPlayersHaveCheckersOut()); 
-
-            // play (loop) should end when a player declines a double or bears off all pieces
-
-        System.out.println("Game Finished");
 
     }
 
