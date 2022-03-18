@@ -11,7 +11,6 @@ import whoiswho.Colour;
 import solve.Move;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class World {
     private Player player1;
@@ -54,15 +53,45 @@ public class World {
         players[1] = abot;
     }
 
-    public void playBackGammon(){
-        board = new Board(this);
-        System.out.printf("Welcome to ByteGammon! Choose one of the following options: %n");
-        System.out.printf("1: %s%n2: %s%n3: %s%n", "Play with another human",
-                "Play against a robot", "Watch two robots play");
+    public void startGame(){
+        // setup
+        ArrayList<Move> legalMoves;
+        do{
+            d1.roll();
+            d2.roll();
+        } while (d1.getValue() == d2.getValue());
+        if(d1.getValue() > d1.getValue()){
+            // player1's turn first
+            turn = 0;
+        } else{
+            // player2's turn first
+            turn = 1;
+        }
 
-        Scanner kbd = new Scanner(System.in);
-        Game g = new Game(this);
-        g.startGame(kbd.nextInt());
+        board = new Board(this); // create the board here so dice are added
+
+        System.out.println("Welcome to the game, here's the board: \n" + board);
+
+        do{
+            // start the play (start of loop)
+            System.out.println("\n\n\nHere's the board at the start of " + players[turn].getColour() + "'s turn: \n" + board);
+            legalMoves = Solve.analyze(board, players[turn]);
+            if(legalMoves.size() > 0) {
+                System.out.println("Move to be made: \n" + legalMoves.get(0));
+                players[turn].makeMove(legalMoves.get(0)); // just make the first legal move
+            }
+            else{System.out.println("No legal moves.");}
+
+            for(Die d : dice)
+                d.roll();
+
+            nextTurn();
+
+        } while(board.bothPlayersHaveCheckersOut()); 
+
+            // play (loop) should end when a player declines a double or bears off all pieces
+
+        System.out.println("Game Finished");
 
     }
 
@@ -79,8 +108,8 @@ public class World {
         return players[n - 1];
     }
 
-    public Player[] getPlayers(){
-        return players;
+    public void nextTurn(){
+        turn = (turn + 1) % 2;
     }
 
     public DoublingCube getdoublingcube(){
