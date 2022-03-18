@@ -41,24 +41,29 @@ public class Ai extends Player {
     //reshuffles and picks a new random move form the list of moves
 
 
-
     @Override
     public void makeMove(Move randMove) {
         int start, end;
+        int i = 1;
         Point startPoint, endPoint;
         for (Ply p : randMove.getPlies()) {
+            System.out.println("Ply: " + i++ + " " + p);
             start = p.getStart() - 1;
             end = p.getEnd() - 1;
             startPoint = world.getBoard().getPoint(start, this.colour);
-            endPoint = p.getEnd() < 0 ? world.getBoard().getBearOffZone() : world.getBoard().getPoint(end, this.colour);
-            Collections.shuffle(randMove.getPlies());//shuffles the arraylist of plies
-            this.reShuffle();
-            if(endPoint.isBlot(this.colour)){
+            endPoint = end < 0 ? world.getBoard().getBearOffZone() : world.getBoard().getPoint(end, this.colour);
+            if (endPoint.isBlot(this.colour)) { // if end point of ply is a blot, hit opponent
                 world.getBoard().getBearOffZone().placeChecker(endPoint.pickUpChecker());
             }
             endPoint.placeChecker(startPoint.pickUpChecker());
+            System.out.println("Here's the new board after one ply: \n" + world.getBoard());
+            Collections.shuffle(randMove.getPlies());//shuffles the arraylist of plies
+            this.reShuffle();
         }
     }
+
+
+
 
     /**
      * Works very similarly to the player's makemove method
