@@ -18,7 +18,7 @@ public class Player {
     public Player(Colour colour, World world){
         this.colour = colour;
         this.world = world;
-        this.hasdoublingcube = true;
+        this.hasdoublingcube = false;
         this.iswinner = false;
     }
 
