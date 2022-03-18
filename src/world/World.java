@@ -41,7 +41,7 @@ public class World {
 
     public World(Config c){
         player1 = new Player(Colour.RED, this);
-        abot = new Ai(Colour.BLACK, this);
+        player2 = new Player(Colour.BLACK, this);
         d1 = new Die(); // "p1's" die
         d2 = new Die(); // the bot's die
         doublingCube = new DoublingCube();
@@ -51,6 +51,12 @@ public class World {
         players = new Player[2];
         players[0] = player1;
         players[1] = abot;
+    }
+
+    public void startRobotGame(){
+        board = new Board(this);
+        RobotGame rg = new RobotGame(this);
+        rg.start();
     }
 
     public void startGame(){
@@ -101,6 +107,10 @@ public class World {
 
     public Board getBoard() {
         return board;
+    }
+
+    public Player[] getPlayers(){
+        return players;
     }
 
     public Player getPlayer(int n) {
